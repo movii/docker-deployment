@@ -8,3 +8,16 @@ before_install:
 
 script:
   - docker run movii/docker-deployment npm run test -- --coverage
+
+depoly:
+  provider: elasticbeanstalk
+  region: "ap-northeast-1"
+  app: "docker-deployment"
+  env: "DockerDeployment-env"
+  bucket_name: "elasticbeanstalk-ap-northeast-1-164521457965"
+  bucket_path: "docker-deployment"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
