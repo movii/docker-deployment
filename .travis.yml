@@ -9,7 +9,7 @@ before_install:
 script:
   - docker run movii/docker-deployment npm run test -- --coverage
 
-depoly:
+deploy:
   provider: elasticbeanstalk
   region: "ap-northeast-1"
   app: "docker-deployment"
